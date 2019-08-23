@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
       resources :movies,    defaults: { format: 'json' } do
         collection do
-          get 'title/:title' , to: 'auditoria#show'
+          get 'title/:title' , to: 'movies#show'
         end
       end
       resources :auditoria, defaults: { format: 'json' } do
