@@ -4,8 +4,25 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+# t.datetime "start_time"
+#     t.datetime "end_time"
+#     t.decimal "price"
+#     t.integer "tickets_available"
+#     t.datetime "created_at", null: false
+#     t.datetime "updated_at", null: false
+#     t.bigint "movie_id"
+#     t.bigint "auditorium_id"
+show_time_true: 
+  id: 5
+  start_time: 2018-03-29T13:34:00.000Z
+  end_time: 2018-03-29T13:34:00.000Z
+  price: 360.0
+  movie_id: 5
+  auditorium_id: 5
 # column: value
 #
-two: {}
+
+# show_time_false: {}
+  # start_time: 2018-03-29T13:34:00.000Z
+  # end_time: 2018-03-29T13:34:00.000Z
 # column: value

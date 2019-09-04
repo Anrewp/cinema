@@ -32,7 +32,7 @@ class Api::V1::MoviesController < Api::V1::ApiController
     if @movie.save
       head :ok
     else
-      render json: { movie: "Something went wrong" }, status: :unprocessable_entity
+      render json: { movie: "#{@movie.errors.full_messages.to_sentence}" }, status: :unprocessable_entity
     end
     
   end
