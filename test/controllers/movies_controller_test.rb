@@ -26,7 +26,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 #----------------------------------------------  
   test "POST MOVIES" do
 #1.create movie 
-  	post api_v1_movies_path, params: { movie: { title: 'Bob 13' }}
+  	post api_v1_movies_path, params: { movie: { title: 'Bob 13', duration: 120 }}
   	assert_response :success
 
 #2.title validation uniqueness 
@@ -36,6 +36,10 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 #3.title validation presence
     post api_v1_movies_path, params: { movie: { title: '' }}
     assert_equal JSON.parse(response.body)['title'][0], "can't be blank"
+
+#4.duration validation presence
+    post api_v1_movies_path, params: { movie: { title: 'Bob11' }}
+    assert_equal JSON.parse(response.body)['duration'][0], "can't be blank"    
   end
 #------------------------------------------------
   test "DELETE MOVIES" do
@@ -64,6 +68,10 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 #4.title validation uniqueness
     put api_v1_movie_path(id:5),params: { movie: { title: 'It2' }}
     assert_equal JSON.parse(response.body)['movie'], "Title has already been taken"
+
+#5.duration validation presence
+    put api_v1_movie_path(id:5),params: { movie: { title: 'It5', duration: '' }}
+    assert_equal JSON.parse(response.body)['movie'], "Duration can't be blank"    
   end
 #-----------------------------------------------
 end

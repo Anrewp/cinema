@@ -8,7 +8,30 @@ one:
   id: 5
   email: 'adf@mail.ru'
   seat: 5 
+  show_time_id: 5
 # column: value
 #
-two: {}
+two:
+  id: 6
+  email: 'adf@mail.ru'
+  seat: 6 
+  show_time_id: 5
+
+three:
+  id: 7
+  email: 'adf@mail.ru'
+  seat: 7 
+  show_time_id: 6
+
+four:
+  id: 8
+  email: 'adf@mail.ru'
+  seat: 8 
+  show_time_id: 6
+
+five:
+  id: 9
+  email: 'adf@mail.ru'
+  seat: 9 
+  show_time_id: 6
 # column: value

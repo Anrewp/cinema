@@ -2,7 +2,9 @@ class Api::V1::TicketsController < Api::V1::ApiController
   before_action :find_ticket, except: [:index, :create]
 
   def index
-    render json: Ticket.unscoped, status: :ok
+    tickets = Ticket.unscoped
+    tickets = tickets.where(show_time_id: params[:showtime_id]) if params[:showtime_id]
+    render json: tickets, status: :ok
   end
 
   def show
@@ -32,7 +34,7 @@ class Api::V1::TicketsController < Api::V1::ApiController
     if @ticket.save
       head :ok
     else
-      render json: { ticket: "Something went wrong" }, status: :unprocessable_entity
+      render json: @ticket.errors, status: :unprocessable_entity
     end
     
   end

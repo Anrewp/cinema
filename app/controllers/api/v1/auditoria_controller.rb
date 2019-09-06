@@ -31,7 +31,7 @@ class Api::V1::AuditoriaController < Api::V1::ApiController
     if @auditorium.save
       head :ok
     else
-      render json: { auditorium: "Something went wrong" }, status: :unprocessable_entity
+      render json: @auditorium.errors, status: :unprocessable_entity
     end
     
   end

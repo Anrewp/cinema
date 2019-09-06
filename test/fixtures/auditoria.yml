@@ -11,5 +11,8 @@ one:
 # column: value
 #
 
-# two: {}
+two: 
+  id: 6
+  title: Chaplin
+  capacity: 10
 # column: value

@@ -12,13 +12,41 @@
 #     t.datetime "updated_at", null: false
 #     t.bigint "movie_id"
 #     t.bigint "auditorium_id"
-show_time_true: 
+showtime_one: 
   id: 5
-  start_time: 2018-03-29T13:34:00.000Z
-  end_time: 2018-03-29T13:34:00.000Z
+  start_time: 2018-03-29T10:00:00.000Z
+  end_time: 2018-03-29T12:00:00.000Z
   price: 360.0
   movie_id: 5
   auditorium_id: 5
+  tickets_available: 40
+
+showtime_two: 
+  id: 6
+  start_time: 2018-03-29T13:00:00.000Z
+  end_time: 2018-03-29T15:00:00.000Z
+  price: 360.0
+  movie_id: 5
+  auditorium_id: 5
+  tickets_available: 40
+
+showtime_three: 
+  id: 7
+  start_time: 2018-03-29T17:00:00.000Z
+  end_time: 2018-03-29T19:00:00.000Z
+  price: 360.0
+  movie_id: 6
+  auditorium_id: 5
+  tickets_available: 40
+
+showtime_four: 
+  id: 8
+  start_time: 2018-03-29T20:00:00.000Z
+  end_time: 2018-03-29T22:00:00.000Z
+  price: 360.0
+  movie_id: 6
+  auditorium_id: 5
+  tickets_available: 40
 # column: value
 #
 

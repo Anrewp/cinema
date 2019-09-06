@@ -1,9 +1,9 @@
 class Ticket < ApplicationRecord
   belongs_to :show_time
-  validates :seat, presence: true
-  validates :email, presence: true
-  validate :valid_seat
-  validate :available_seat
+  validates  :seat,      presence: true
+  validates  :seat,      uniqueness: { scope: :show_time_id }
+  validates  :email,     presence: true
+  validate   :valid_seat
 
   after_create :subtract_tickets_available
 
@@ -18,11 +18,5 @@ class Ticket < ApplicationRecord
     unless self.seat <= self.show_time.auditorium.capacity && self.seat > 0
       errors.add(:seat, "There is no such seat")
     end 
-  end
-
-  def available_seat
-  	if self.show_time.tickets.find_by(seat: self.seat)
-  	  errors.add(:seat, "Seat has already been taken")
-  	end
   end
 end

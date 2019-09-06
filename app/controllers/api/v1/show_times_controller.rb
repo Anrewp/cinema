@@ -2,7 +2,9 @@ class Api::V1::ShowTimesController < Api::V1::ApiController
   before_action :find_show_time, except: [:index, :create]
 
   def index
-    render json: ShowTime.unscoped, status: :ok
+    showtimes = ShowTime.unscoped
+    showtimes = showtimes.where(movie_id: params[:movie_id]) if params[:movie_id]
+    render json: showtimes, status: :ok
   end
 
   def show
@@ -27,11 +29,11 @@ class Api::V1::ShowTimesController < Api::V1::ApiController
   end
 
   def update
-    @show_time.attributes = movie_params
+    @show_time.attributes = show_time_params
     if @show_time.save
       head :ok
     else
-      render json: { show_time: "Something went wrong" }, status: :unprocessable_entity
+      render json: @show_time.errors, status: :unprocessable_entity
     end
     
   end
@@ -46,7 +48,6 @@ private
  
   def show_time_params
     params.require(:show_time).permit(:start_time, 
-                                      :end_time, 
                                       :price,
                                       :auditorium_id,
                                       :movie_id)
